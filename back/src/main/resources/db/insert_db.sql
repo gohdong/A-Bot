@@ -1,0 +1,1 @@
+-- INSERT INTO user_directory (`id`) VALUES ('hello');
