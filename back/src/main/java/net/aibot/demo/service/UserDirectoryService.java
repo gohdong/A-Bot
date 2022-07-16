@@ -4,10 +4,12 @@ import net.aibot.demo.domain.dto.UserDirectoryDto;
 import net.aibot.demo.domain.entity.UserDirectory;
 import net.aibot.demo.repository.UserDirectoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserDirectoryService {
@@ -27,8 +29,12 @@ public class UserDirectoryService {
         return result;
     }
 
-    public UserDirectoryDto getUserDirectory(long userDirectoryId) {
-        return null;
+    public UserDirectoryDto getUserDirectory(long userDirectoryId) throws EmptyObjectException {
+        Optional<UserDirectory> userDirectoryOptional = userDirectoryRepository.findById(userDirectoryId);
+        if (userDirectoryOptional.isPresent()) {
+            return userDirectoryOptional.get().toDto();
+        }
+        throw new EmptyObjectException();
     }
 
     public Long setUserDirectory(UserDirectoryDto userDirectoryDto) {
@@ -36,13 +42,30 @@ public class UserDirectoryService {
         return savedEntity.getId();
     }
 
-    public Long updateUserDirectory(UserDirectoryDto userDirectoryDto) {
-        userDirectoryRepository.getReferenceById(userDirectoryDto.getId());
-        UserDirectory savedEntity = userDirectoryRepository.save(userDirectoryDto.toEntity());
-        return savedEntity.getId();
+    public Long updateUserDirectory(UserDirectoryDto userDirectoryDto) throws EmptyObjectException {
+        Optional<UserDirectory> userDirectoryOptional = userDirectoryRepository.findById(userDirectoryDto.getId());
+        if (userDirectoryOptional.isPresent()) {
+            UserDirectory savedEntity = userDirectoryRepository.save(userDirectoryDto.toEntity());
+            return savedEntity.getId();
+        } else {
+            throw new EmptyObjectException("There is no entity", HttpStatus.NO_CONTENT);
+        }
+
     }
 
     public List<Long> updateUserDirectories(List<UserDirectoryDto> userDirectoryDtos) {
+
+
         return null;
+    }
+
+    public Long deleteUserDirectories(long userDirectoryId) throws EmptyObjectException {
+        Optional<UserDirectory> userDirectoryOptional = userDirectoryRepository.findById(userDirectoryId);
+        if (userDirectoryOptional.isPresent()) {
+            userDirectoryRepository.delete(userDirectoryOptional.get());
+            return userDirectoryId;
+        } else {
+            throw new EmptyObjectException("There is no entity", HttpStatus.NO_CONTENT);
+        }
     }
 }
