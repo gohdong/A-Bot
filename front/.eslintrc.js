@@ -14,5 +14,7 @@ module.exports = {
 	plugins: ["react", "@typescript-eslint"],
 	rules: {
 		"no-unused-vars": "warn",
+		"no-shadow": "off",
+		"@typescript-eslint/no-shadow": ["error"],
 	},
 };

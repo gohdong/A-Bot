@@ -1,0 +1,45 @@
+#main-contents {
+  width: 100%;
+  min-width: 500px;
+  flex-grow: 1;
+  position: relative;
+  height: calc(100vh - 91px);
+
+  #tab-bar {
+    height: 35px;
+    background-color: yellow;
+    display: flex;
+    .tab {
+      width: 200px;
+      color: blue;
+    }
+  }
+}
+
+
+@media (max-width: 480px) {
+  #placeholder {
+    width: 90%;
+  }
+  #main-contents {
+    min-width: 0;
+    #main-contents-wrap {
+      > .image-wrap {
+        > img {
+          width: 90%;
+        }
+      }
+    }
+    #main-skeleton-wrap {
+      .image-wrap {
+        > div {
+          width: 90%;
+          height: 40vh;
+        }
+      }
+    }
+  }
+}
+
+
+

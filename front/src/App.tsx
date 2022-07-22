@@ -1,27 +1,31 @@
 import React from "react";
-import "./App.css";
+import {useRecoilState} from "recoil";
+import "./App.scss";
+import AppBar from "./components/appbar/AppBar";
+import LeftSidebar from "./components/left_sidebar/LeftSidebar";
+import RightSideBar from "./components/right_sidebar/RightSideBar";
+import BottomStatusBar from "./components/bottom_status_bar/BottomStatusBar";
+import MainContents from "./components/main/MainContents";
 
 function App() {
 	return (
-		<div className="App">
-			<header className="App-header">
-				<p>
-          Edit
-					{" "}
-					<code>src/App.tsx</code>
-					{" "}
-          and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-          Learn React
-				</a>
-			</header>
-		</div>
+		<>
+			<AppBar/>
+			<div id="main-wrapper">
+				<div id="contents-wrapper">
+					<div id="static-contents">
+						<div className="flex-wrapper">
+							<LeftSidebar/>
+							<MainContents/>
+						</div>
+					</div>
+					<div id="toggle-contents">
+						<RightSideBar/>
+					</div>
+				</div>
+			</div>
+			<BottomStatusBar/>
+		</>
 	);
 }
 
