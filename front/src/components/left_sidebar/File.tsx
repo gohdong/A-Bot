@@ -1,6 +1,8 @@
 import {useState} from "react";
 import {VscFileCode, VscFolder, VscFolderOpened} from "react-icons/vsc";
+import {useRecoilState} from "recoil";
 
+import {recentSelected} from "../../recoil/sidebarState";
 import FileTreeNode, {FileType} from "../../data/Tree";
 
 export type FileTreeViewType = {
@@ -10,8 +12,12 @@ export type FileTreeViewType = {
 
 export default function File({fileNode, padding}: FileTreeViewType) {
 	const [openChildren, setOpenChildren] = useState(false);
+	const [recentSelectedFile, setRecentSelectedFile] = useRecoilState(recentSelected);
+
 	const onClickFile = () => {
-		if (fileNode.getFileType === FileType.DIRECTORY) {
+		setRecentSelectedFile(fileNode.getID);
+
+		if (recentSelectedFile === fileNode.getID && fileNode.getFileType === FileType.DIRECTORY) {
 			setOpenChildren(prevState => !prevState);
 		} else {
 			console.log("AA");
@@ -29,7 +35,7 @@ export default function File({fileNode, padding}: FileTreeViewType) {
 	};
 
 	return <>
-		<span className="fileTreeNodeSpan" style={{paddingLeft: padding}} onClick={onClickFile}>
+		<span className={`fileTreeNodeSpan ${recentSelectedFile === fileNode.getID && "selected"}`} style={{paddingLeft: padding}} onClick={onClickFile}>
 			{
 				getIcon()
 			}

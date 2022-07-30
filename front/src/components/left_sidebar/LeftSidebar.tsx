@@ -6,6 +6,7 @@ import {filesState} from "../../recoil/imageState";
 import {getFileNodeById} from "../../common/commonFunctions";
 import {file} from "../../common/types";
 import File from "./File";
+import Buttons from "./Buttons";
 
 
 export default function LeftSidebar() {
@@ -42,11 +43,10 @@ export default function LeftSidebar() {
 				{
 					files
 						.filter(value => value.getParent === null)
-						.map(value => <File key={`dir_${value.getID}`} fileNode={value} padding={0}/>)
+						.map(value => <File key={`${value.getID}`} fileNode={value} padding={0}/>)
 				}
 			</div>
-			<div id="left-sidebar-buttons">
-			</div>
+			<Buttons />
 		</div>
 	);
 }
