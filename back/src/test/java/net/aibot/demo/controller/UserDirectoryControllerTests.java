@@ -25,9 +25,9 @@ public class UserDirectoryControllerTests extends AbstractControllerTests{
     @Test
     public void getUserDirectories() throws Exception {
         mockMvc.perform(get("/userDirectory"))
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().is(200))
-                .andExpect(jsonPath("$.result").isArray());
+                .andExpect(jsonPath("$").isArray());
     }
 
 }
