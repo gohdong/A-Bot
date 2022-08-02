@@ -1,4 +1,4 @@
-package net.aibot.demo.service;
+package net.aibot.demo.exception;
 
 import org.springframework.http.HttpStatus;
 

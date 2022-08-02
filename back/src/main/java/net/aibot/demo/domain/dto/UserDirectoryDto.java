@@ -1,6 +1,8 @@
 package net.aibot.demo.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
 import net.aibot.demo.domain.FileType;
@@ -16,6 +18,9 @@ public class UserDirectoryDto {
     private String name;
     private String description;
     private FileType fileType;
+
+    @ApiModelProperty(example = "1657678452000")
+    @JsonFormat(shape = JsonFormat.Shape.NUMBER)
     private Date createdDate;
 
     @Builder

@@ -27,6 +27,7 @@ public class UserDirectory {
     @Column(name = "file_type")
     private FileType fileType;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date")
     private Date createdDate;
 

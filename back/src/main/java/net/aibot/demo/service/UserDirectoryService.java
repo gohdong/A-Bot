@@ -1,7 +1,10 @@
 package net.aibot.demo.service;
 
+import net.aibot.demo.domain.FileType;
 import net.aibot.demo.domain.dto.UserDirectoryDto;
 import net.aibot.demo.domain.entity.UserDirectory;
+import net.aibot.demo.exception.EmptyObjectException;
+import net.aibot.demo.exception.ParentFileIsNotDirectoryException;
 import net.aibot.demo.repository.UserDirectoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,9 +40,18 @@ public class UserDirectoryService {
         throw new EmptyObjectException();
     }
 
-    public Long setUserDirectory(UserDirectoryDto userDirectoryDto) {
+    public Long setUserDirectory(UserDirectoryDto userDirectoryDto) throws EmptyObjectException, ParentFileIsNotDirectoryException {
+        isParentDirectory(userDirectoryDto);
+        
         UserDirectory savedEntity = userDirectoryRepository.save(userDirectoryDto.toEntity());
         return savedEntity.getId();
+    }
+
+    private void isParentDirectory(UserDirectoryDto userDirectoryDto) throws EmptyObjectException, ParentFileIsNotDirectoryException{
+        UserDirectoryDto parentDirectory = getUserDirectory(userDirectoryDto.getParentId());
+        if (!parentDirectory.getFileType().equals(FileType.directory)) {
+            throw new ParentFileIsNotDirectoryException();
+        }
     }
 
     public Long updateUserDirectory(UserDirectoryDto userDirectoryDto) throws EmptyObjectException {
