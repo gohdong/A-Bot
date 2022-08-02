@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a0da1f8-24ab-4fc4-b579-1b2e6e646867" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../back/shellscript/rerun-new.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/FileType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../back/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../back/db/h2_test.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/../back/db/h2_test.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/db/h2_test.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/../back/db/h2_test.trace.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/dto/UserDirectoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/dto/UserDirectoryDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/entity/UserDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/entity/UserDirectory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/vo/UserDirectoryUpdateVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/vo/UserDirectoryUpdateVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/resources/db/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/resources/db/create_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/main/resources/db/insert_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/resources/db/insert_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../back/src/test/java/net/aibot/demo/controller/UserDirectoryControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/test/java/net/aibot/demo/controller/UserDirectoryControllerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/config/CORSFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/config/CORSFilter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

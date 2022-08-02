@@ -12,7 +12,7 @@ export default function Buttons() {
 	const onClickAddFile = async (event:React.MouseEvent, isFile:boolean) => {
 		const body = {
 			description: "string",
-			isFile,
+			fileType: "document",
 			name: "test",
 			parentId: recentSelectedFileId,
 		};
