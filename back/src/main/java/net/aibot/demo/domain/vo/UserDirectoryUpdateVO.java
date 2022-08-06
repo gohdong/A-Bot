@@ -3,7 +3,10 @@ package net.aibot.demo.domain.vo;
 import io.swagger.annotations.ApiModel;
 import lombok.Builder;
 import lombok.Data;
+import net.aibot.demo.domain.FileType;
 import net.aibot.demo.domain.dto.UserDirectoryDto;
+
+import java.util.Date;
 
 @ApiModel
 @Data
@@ -11,14 +14,14 @@ public class UserDirectoryUpdateVO {
     private long parentId;
     private String name;
     private String description;
-    private Boolean isFile;
+    private FileType fileType;
 
     @Builder
-    public UserDirectoryUpdateVO(long parentId, String name, String description, boolean isFile) {
+    public UserDirectoryUpdateVO(long parentId, String name, String description, FileType fileType) {
         this.parentId = parentId;
         this.name = name;
         this.description = description;
-        this.isFile = isFile;
+        this.fileType = fileType;
     }
 
     public UserDirectoryDto toDto(Long id) {
@@ -32,7 +35,8 @@ public class UserDirectoryUpdateVO {
                 .parentId(parentId)
                 .name(name)
                 .description(description)
-                .isFile(isFile)
+                .fileType(fileType)
+                .createdDate(new Date())
                 .build();
     }
 }

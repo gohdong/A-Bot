@@ -3,12 +3,12 @@ package net.aibot.demo.domain.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import net.aibot.demo.domain.FileType;
 import net.aibot.demo.domain.dto.UserDirectoryDto;
 import net.aibot.demo.util.IDGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @NoArgsConstructor
 @Getter
@@ -23,16 +23,23 @@ public class UserDirectory {
     private String name;
     private String description;
 
-    @Column(name = "is_file")
-    private boolean isFile;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "file_type")
+    private FileType fileType;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_date")
+    private Date createdDate;
+
 
     @Builder
-    public UserDirectory(long id, long parentId, String name, String description, boolean isFile) {
+    public UserDirectory(long id, long parentId, String name, String description, FileType fileType, Date createdDate) {
         setId(id);
         this.parentId = parentId;
         this.name = name;
         this.description = description;
-        this.isFile = isFile;
+        this.fileType = fileType;
+        this.createdDate = createdDate;
     }
 
     private void setId(long id) {
@@ -49,7 +56,8 @@ public class UserDirectory {
                 .parentId(parentId)
                 .name(name)
                 .description(description)
-                .isFile(isFile)
+                .fileType(fileType)
+                .createdDate(createdDate)
                 .build();
     }
 }

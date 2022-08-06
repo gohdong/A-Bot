@@ -4,7 +4,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.aibot.demo.domain.dto.UserDirectoryDto;
 import net.aibot.demo.domain.vo.UserDirectoryUpdateVO;
-import net.aibot.demo.service.EmptyObjectException;
+import net.aibot.demo.exception.EmptyObjectException;
+import net.aibot.demo.exception.ParentFileIsNotDirectoryException;
 import net.aibot.demo.service.UserDirectoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -37,7 +38,7 @@ public class UserDirectoryController {
 
     @ApiOperation(value = "유저의 파일구조를 저장한다.")
     @PostMapping(value = "/userDirectory", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Long setUserDirectory(@RequestBody UserDirectoryUpdateVO userDirectoryUpdateVO) {
+    public @ResponseBody Long setUserDirectory(@RequestBody UserDirectoryUpdateVO userDirectoryUpdateVO) throws EmptyObjectException, ParentFileIsNotDirectoryException {
         return userDirectoryService.setUserDirectory(userDirectoryUpdateVO.toDto());
     }
 

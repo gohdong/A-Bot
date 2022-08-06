@@ -1,9 +1,14 @@
 package net.aibot.demo.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
+import net.aibot.demo.domain.FileType;
 import net.aibot.demo.domain.entity.UserDirectory;
+
+import java.util.Date;
 
 @ApiModel
 @Data
@@ -12,15 +17,20 @@ public class UserDirectoryDto {
     private long parentId;
     private String name;
     private String description;
-    private Boolean isFile;
+    private FileType fileType;
+
+    @ApiModelProperty(example = "1657678452000")
+    @JsonFormat(shape = JsonFormat.Shape.NUMBER)
+    private Date createdDate;
 
     @Builder
-    public UserDirectoryDto(long id, long parentId, String name, String description, boolean isFile) {
+    public UserDirectoryDto(long id, long parentId, String name, String description, FileType fileType, Date createdDate) {
         this.id = id;
         this.parentId = parentId;
         this.name = name;
         this.description = description;
-        this.isFile = isFile;
+        this.fileType = fileType;
+        this.createdDate = createdDate;
     }
 
     public UserDirectory toEntity() {
@@ -29,7 +39,8 @@ public class UserDirectoryDto {
                 .parentId(parentId)
                 .name(name)
                 .description(description)
-                .isFile(isFile)
+                .fileType(fileType)
+                .createdDate(createdDate)
                 .build();
     }
 }
