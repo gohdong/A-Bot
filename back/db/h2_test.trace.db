@@ -2255,3 +2255,12 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/jina/Git_
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 119 more
+2022-08-09 23:02:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS user_directory( ""ID"" BIGINT NOT NULL, ""PARENT_ID"" BIGINT NOT NULL, ""NAME"" CHARACTER VARYING(255) NOT NULL, ""DESCRIPTION"" CHARACTER VARYING(255) NOT NULL, ""FILE_TYPE"" CHARACTER VARYING(255) NOT NULL, ""CREATED_DATE"" TIMESTAMP NOT NULL, PRIMARY KEY (""ID"")[*]"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS user_directory( "ID" BIGINT NOT NULL, "PARENT_ID" BIGINT NOT NULL, "NAME" CHARACTER VARYING(255) NOT NULL, "DESCRIPTION" CHARACTER VARYING(255) NOT NULL, "FILE_TYPE" CHARACTER VARYING(255) NOT NULL, "CREATED_DATE" TIMESTAMP NOT NULL, PRIMARY KEY ("ID") [42001-214]
+2022-08-09 23:03:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS common_http_header( ""ID"" BIGINT NOT NULL, ""NAME"" CHARACTER VARYING(255) NOT NULL PRIMARY KEY [*](""ID"") )"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS common_http_header( "ID" BIGINT NOT NULL, "NAME" CHARACTER VARYING(255) NOT NULL PRIMARY KEY ("ID") ) [42001-214]
+2022-08-09 23:04:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "common_http_header" not found (candidates are: "COMMON_HTTP_HEADER"); SQL statement:
+INSERT INTO "PUBLIC"."common_http_header" VALUES (101, 'Host'), (102, 'User-Agent'), (103, 'Accept'), (104, 'Accept-Encoding'), (105, 'Connection') [42103-214]
