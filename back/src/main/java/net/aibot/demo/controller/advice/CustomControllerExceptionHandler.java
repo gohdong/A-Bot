@@ -1,7 +1,6 @@
 package net.aibot.demo.controller.advice;
 
-import net.aibot.demo.exception.EmptyObjectException;
-import net.aibot.demo.exception.ParentFileIsNotDirectoryException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,18 +12,22 @@ import java.util.HashMap;
 @ControllerAdvice
 public class CustomControllerExceptionHandler {
 
-    @ExceptionHandler(EmptyObjectException.class)
-    public ResponseEntity<HashMap<String, String>> EmptyObjectExceptionHandler(EmptyObjectException ex) {
-        return new ResponseEntity<>(new HashMap<>(), ex.getStatus());
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<HashMap<String, Object>> EmptyObjectExceptionHandler(IllegalArgumentException ex, HttpServletRequest request) {
+        return new ResponseEntity<>(makeExceptionMap(ex, request), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(ParentFileIsNotDirectoryException.class)
-    public ResponseEntity<HashMap<String, Object>> ParentFileIsNotDirectoryExceptionHandler(ParentFileIsNotDirectoryException ex, HttpServletRequest request) {
+//    @ExceptionHandler(ParentFileIsNotDirectoryException.class)
+//    public ResponseEntity<HashMap<String, Object>> ParentFileIsNotDirectoryExceptionHandler(ParentFileIsNotDirectoryException ex, HttpServletRequest request) {
+//        HashMap<String, Object> hashMap = makeExceptionMap(ex, request);
+//        return new ResponseEntity<>(hashMap, ex.getStatus());
+//    }
+
+    private HashMap<String, Object> makeExceptionMap(Exception ex, HttpServletRequest request) {
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("timestamp", new Date().getTime());
-        hashMap.put("status", ex.getStatus().value());
-        hashMap.put("error", ex.getClass().getSimpleName());
+        hashMap.put("error", ex.getMessage());
         hashMap.put("path", request.getServletPath());
-        return new ResponseEntity<>(hashMap, ex.getStatus());
+        return hashMap;
     }
 }

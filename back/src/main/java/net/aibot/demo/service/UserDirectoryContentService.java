@@ -1,14 +1,12 @@
 package net.aibot.demo.service;
 
 import net.aibot.demo.domain.dto.UserDirectoryContentDto;
-import net.aibot.demo.domain.entity.UserDirectory;
 import net.aibot.demo.domain.entity.UserDirectoryContent;
-import net.aibot.demo.exception.EmptyObjectException;
 import net.aibot.demo.repository.UserDirectoryContentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,16 +34,17 @@ public class UserDirectoryContentService {
         if (userDirectoryOptional.isPresent()) {
             return userDirectoryOptional.get().toDto();
         }
-        throw new IllegalArgumentException("There is no entity");
+        throw new IllegalArgumentException("There is no ID");
     }
 
+    @Transactional
     public Long updateUserDirectory(UserDirectoryContentDto userDirectoryContentDto) {
         Optional<UserDirectoryContent> userDirectoryOptional = userDirectoryContentRepository.findById(userDirectoryContentDto.getId());
         if (userDirectoryOptional.isPresent()) {
             UserDirectoryContent savedEntity = userDirectoryContentRepository.save(userDirectoryContentDto.toEntity());
             return savedEntity.getId();
         } else {
-            throw new IllegalArgumentException("There is no entity");
+            throw new IllegalArgumentException("There is no ID");
         }
 
     }

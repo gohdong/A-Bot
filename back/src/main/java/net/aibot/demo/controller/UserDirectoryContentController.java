@@ -4,8 +4,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.aibot.demo.domain.dto.UserDirectoryContentDto;
 import net.aibot.demo.domain.vo.UserDirectoryContentUpdateVO;
-import net.aibot.demo.domain.vo.UserDirectoryUpdateVO;
-import net.aibot.demo.exception.EmptyObjectException;
 import net.aibot.demo.service.UserDirectoryContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
