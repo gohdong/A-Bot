@@ -1,9 +1,11 @@
--- Drop table user_directory;
+Drop table user_directory;
+Drop table common_http_header;
+
 CREATE TABLE IF NOT EXISTS user_directory(
     "ID" BIGINT NOT NULL,
     "PARENT_ID" BIGINT NOT NULL,
     "NAME" CHARACTER VARYING(255) NOT NULL,
-    "DESCRIPTION" CHARACTER VARYING(255) NOT NULL,
+    "DESCRIPTION" JSON DEFAULT NULL,
     "FILE_TYPE" CHARACTER VARYING(255) NOT NULL,
     "CREATED_DATE" TIMESTAMP NOT NULL,
     PRIMARY KEY ("ID")
