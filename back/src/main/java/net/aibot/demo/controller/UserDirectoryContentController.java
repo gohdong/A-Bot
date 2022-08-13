@@ -24,12 +24,11 @@ public class UserDirectoryContentController {
         this.userDirectoryService = userDirectoryService;
     }
 
-    @ApiOperation(value = "유저의 전체 파일내용을 가져온다.")
-//    @ApiResponse(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ResponseDto.class)))
-    @GetMapping(value = "/userDirectoryContent", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<UserContentBaseDto> getUserDirectories() {
-        return userDirectoryService.getUserDirectoryContents();
-    }
+//    @ApiOperation(value = "유저의 전체 파일내용을 가져온다.")
+//    @GetMapping(value = "/userDirectoryContent", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public @ResponseBody List<UserContentBaseDto> getUserDirectories() {
+//        return userDirectoryService.getUserDirectoryContents();
+//    }
 
     @ApiOperation(value = "유저의 파일내용 하나를 가져온다.")
     @GetMapping(value = "/userDirectoryContent/{userDirectoryId}", produces = MediaType.APPLICATION_JSON_VALUE)

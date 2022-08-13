@@ -27,13 +27,13 @@ public class UserContentControllerTests extends AbstractControllerTests{
         return userDirectoryContentController;
     }
 
-    @Test
-    public void getUserDirectoryContents() throws Exception {
-        mockMvc.perform(get("/userDirectoryContent"))
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(status().is(HttpStatus.OK.value()))
-                .andExpect(jsonPath("$").isArray());
-    }
+//    @Test
+//    public void getUserDirectoryContents() throws Exception {
+//        mockMvc.perform(get("/userDirectoryContent"))
+//                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+//                .andExpect(status().is(HttpStatus.OK.value()))
+//                .andExpect(jsonPath("$").isArray());
+//    }
 
     @Test
     public void getUserDirectoryContentByID_BAD_REQUEST() throws Exception {

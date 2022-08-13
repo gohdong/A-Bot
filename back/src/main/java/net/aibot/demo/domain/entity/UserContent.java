@@ -13,6 +13,7 @@ import net.aibot.demo.domain.dto.UserContentDocumentDto;
 import net.aibot.demo.domain.dto.UserContentTaskFileDto;
 
 import javax.persistence.*;
+import java.util.HashMap;
 import java.util.Map;
 
 @NoArgsConstructor
@@ -55,9 +56,17 @@ public class UserContent {
     }
 
     public UserContentTaskFileDto toTaskFileDto() {
+        Map<String, Object> description = new HashMap<>();
+        try {
+            description = new Gson().fromJson(this.description, new TypeToken<Map<String, Object>>() {}.getType());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("This is origin value : " + this.description);
+        }
+
         return UserContentTaskFileDto.taskFileBuilder()
                 .id(id)
-                .description(new Gson().fromJson(description, new TypeToken<Map<String, Object>>() {}.getType()))
+                .description(description)
                 .fileType(fileType)
                 .build();
     }
