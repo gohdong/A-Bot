@@ -9,3 +9,8 @@ export const recentSelected = atom({
 	key: "recentSelected",
 	default: "",
 });
+
+export const recentSelectedDirectoryAtom = atom({
+	key: "recentSelectedDirectory",
+	default: "",
+});

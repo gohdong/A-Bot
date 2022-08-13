@@ -1,8 +1,5 @@
-export enum FileType{
-    DIRECTORY,
-    DOCUMENT,
-    TASK
-}
+import {FileType} from "../common/types";
+
 
 export default class FileTreeNode {
 	// eslint-disable-next-line no-use-before-define
@@ -16,10 +13,6 @@ export default class FileTreeNode {
 
 	get getID() {
 		return this.id;
-	}
-
-	get getChildren() {
-		return this.children;
 	}
 
 	get getFileName(): string {
@@ -39,22 +32,6 @@ export default class FileTreeNode {
 		this.id = id;
 		this.children = [];
 		this.parent = parent;
-		this.parent?.addDescendants(this);
 		this.fileType = fileType;
-	}
-
-	addDescendants(node: FileTreeNode) {
-		this.children.push(node);
-	}
-
-	allChildren() {
-		let result: FileTreeNode[] = [];
-
-		this.children.forEach((value, index) => {
-			result.push(value);
-			result = [...result, ...value.allChildren()];
-		});
-
-		return result;
 	}
 }
