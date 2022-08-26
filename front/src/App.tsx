@@ -3,7 +3,6 @@ import {useRecoilState} from "recoil";
 import "./App.scss";
 import AppBar from "./components/appbar/AppBar";
 import LeftSidebar from "./components/left_sidebar/LeftSidebar";
-import RightSideBar from "./components/right_sidebar/RightSideBar";
 import BottomStatusBar from "./components/bottom_status_bar/BottomStatusBar";
 import MainContents from "./components/main/MainContents";
 
@@ -18,9 +17,6 @@ function App() {
 							<LeftSidebar/>
 							<MainContents/>
 						</div>
-					</div>
-					<div id="toggle-contents">
-						<RightSideBar/>
 					</div>
 				</div>
 			</div>

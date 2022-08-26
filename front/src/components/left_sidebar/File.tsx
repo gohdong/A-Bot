@@ -37,6 +37,26 @@ export default function File({fileNode, padding}: FileTreeViewType) {
 		}
 	};
 
+	const onKeyDown = async (e: React.KeyboardEvent) => {
+		if (e.key === "Delete" || e.key === "Backspace") {
+			if (recentSelectedFile === "" || parseInt(recentSelectedFile, 10) === 0) {
+				return;
+			}
+			const fetchPromise = await fetch(`http://localhost:8080/userDirectory/${recentSelectedFile}`,
+				{
+					method: "DELETE",
+				},
+			);
+
+			if (fetchPromise.ok && fetchPromise.status === 200) {
+				setFiles(prev => prev.filter(value => value.getID !== recentSelectedFile));
+				return;
+			}
+
+			alert("오류가 발생했습니다.");
+		}
+	};
+
 	const getIcon = function() {
 		if (fileNode.getFileType === FileType.task_file) {
 			return <VscFileCode/>;
@@ -51,7 +71,13 @@ export default function File({fileNode, padding}: FileTreeViewType) {
 	};
 
 	return <>
-		<span className={`fileTreeNodeSpan ${recentSelectedFile === fileNode.getID && "selected"}`} style={{paddingLeft: padding}} onClick={onClickFile}>
+		<span
+			className={`fileTreeNodeSpan ${recentSelectedFile === fileNode.getID && "selected"}`}
+			style={{paddingLeft: padding}}
+			onClick={onClickFile}
+			tabIndex={0}
+			onKeyDown={onKeyDown}
+		>
 			{
 				getIcon()
 			}

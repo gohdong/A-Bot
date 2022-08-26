@@ -14,11 +14,6 @@ function AppBar() {
 		<div id={"app-bar"}>
 			<div className="app-bar-wrap">
 				<p>A-Bot</p>
-				<div>
-					<button className="sidebar-button" onClick={onClickButton}>
-						<ViewSideBar/>
-					</button>
-				</div>
 			</div>
 		</div>
 	);

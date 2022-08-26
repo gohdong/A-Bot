@@ -44,13 +44,15 @@ export default function NewFile({fileType, padding, parentID}: NewFileType) {
 				},
 			);
 
+
 			if (fetchPromise.ok && fetchPromise.status === 200) {
+				const id = await fetchPromise.json();
 				const parentNode = getFileNodeById(files, parentID);
 
 				const newFileNode = new FileTreeNode(
 					// @ts-ignore
 					event.target.value,
-					"~!@#",
+					id.toString(),
 					parentNode,
 					fileType,
 				);
@@ -73,7 +75,7 @@ export default function NewFile({fileType, padding, parentID}: NewFileType) {
 	};
 
 	return <>
-		<span className={`fileTreeNodeSpan`} onClick={onClick} style={{paddingLeft: padding}}>
+		<span id="asd" className={`fileTreeNodeSpan`} onClick={onClick} style={{paddingLeft: padding}}>
 			{
 				getIcon()
 			}
