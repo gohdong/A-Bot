@@ -16,7 +16,7 @@ public class UserDirectoryDto {
     private long id;
     private long parentId;
     private String name;
-    private String description;
+//    private String description;
     private FileType fileType;
 
     @ApiModelProperty(example = "1657678452000")
@@ -28,7 +28,7 @@ public class UserDirectoryDto {
         this.id = id;
         this.parentId = parentId;
         this.name = name;
-        this.description = description;
+//        this.description = description;
         this.fileType = fileType;
         this.createdDate = createdDate;
     }
@@ -38,7 +38,7 @@ public class UserDirectoryDto {
                 .id(id)
                 .parentId(parentId)
                 .name(name)
-                .description(description)
+//                .description(description)
                 .fileType(fileType)
                 .createdDate(createdDate)
                 .build();

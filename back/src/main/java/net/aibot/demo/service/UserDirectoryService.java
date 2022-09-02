@@ -3,13 +3,11 @@ package net.aibot.demo.service;
 import net.aibot.demo.domain.FileType;
 import net.aibot.demo.domain.dto.UserDirectoryDto;
 import net.aibot.demo.domain.entity.UserDirectory;
-import net.aibot.demo.exception.EmptyObjectException;
-import net.aibot.demo.exception.ParentFileIsNotDirectoryException;
 import net.aibot.demo.repository.UserDirectoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,35 +30,38 @@ public class UserDirectoryService {
         return result;
     }
 
-    public UserDirectoryDto getUserDirectory(long userDirectoryId) throws EmptyObjectException {
+    public UserDirectoryDto getUserDirectory(long userDirectoryId) {
         Optional<UserDirectory> userDirectoryOptional = userDirectoryRepository.findById(userDirectoryId);
         if (userDirectoryOptional.isPresent()) {
             return userDirectoryOptional.get().toDto();
         }
-        throw new EmptyObjectException();
+        throw new IllegalArgumentException("There is no ID");
     }
 
-    public Long setUserDirectory(UserDirectoryDto userDirectoryDto) throws EmptyObjectException, ParentFileIsNotDirectoryException {
+    public Long setUserDirectory(UserDirectoryDto userDirectoryDto) {
         isParentDirectory(userDirectoryDto);
         
         UserDirectory savedEntity = userDirectoryRepository.save(userDirectoryDto.toEntity());
         return savedEntity.getId();
     }
 
-    private void isParentDirectory(UserDirectoryDto userDirectoryDto) throws EmptyObjectException, ParentFileIsNotDirectoryException{
+    private void isParentDirectory(UserDirectoryDto userDirectoryDto) {
         UserDirectoryDto parentDirectory = getUserDirectory(userDirectoryDto.getParentId());
         if (!parentDirectory.getFileType().equals(FileType.directory)) {
-            throw new ParentFileIsNotDirectoryException();
+            throw new IllegalArgumentException("Parent File Is Not Directory");
         }
     }
 
-    public Long updateUserDirectory(UserDirectoryDto userDirectoryDto) throws EmptyObjectException {
+    @Transactional
+    public Long updateUserDirectory(UserDirectoryDto userDirectoryDto) {
+        isParentDirectory(userDirectoryDto);
+
         Optional<UserDirectory> userDirectoryOptional = userDirectoryRepository.findById(userDirectoryDto.getId());
         if (userDirectoryOptional.isPresent()) {
             UserDirectory savedEntity = userDirectoryRepository.save(userDirectoryDto.toEntity());
             return savedEntity.getId();
         } else {
-            throw new EmptyObjectException("There is no entity", HttpStatus.NO_CONTENT);
+            throw new IllegalArgumentException("There is no ID");
         }
 
     }
@@ -71,13 +72,13 @@ public class UserDirectoryService {
         return null;
     }
 
-    public Long deleteUserDirectories(long userDirectoryId) throws EmptyObjectException {
+    public Long deleteUserDirectories(long userDirectoryId) {
         Optional<UserDirectory> userDirectoryOptional = userDirectoryRepository.findById(userDirectoryId);
         if (userDirectoryOptional.isPresent()) {
             userDirectoryRepository.delete(userDirectoryOptional.get());
             return userDirectoryId;
         } else {
-            throw new EmptyObjectException("There is no entity", HttpStatus.NO_CONTENT);
+            throw new IllegalArgumentException("There is no ID");
         }
     }
 }

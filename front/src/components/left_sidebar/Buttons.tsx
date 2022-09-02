@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import {AiOutlineDelete, AiOutlineFileAdd, AiOutlineFolderAdd} from "react-icons/ai";
 import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
-import {recentSelected, recentSelectedDirectoryAtom} from "../../recoil/sidebarState";
+import {recentSelectedFileIdAtom, recentSelectedDirectoryAtom} from "../../recoil/sidebarState";
 import {filesAtom, newFileParentIDAtom} from "../../recoil/fileState";
 import {FileType} from "../../common/types";
 import {getFileNodeById} from "../../common/commonFunctions";
 
 export default function Buttons() {
 	const [isToolTipOpened, setIsToolTipOpened] = useState(false);
-	const recentSelectedFileId = useRecoilValue(recentSelected);
+	const recentSelectedFileId = useRecoilValue(recentSelectedFileIdAtom);
 	const recentSelectedDirId = useRecoilValue(recentSelectedDirectoryAtom);
 	const [files, setFiles] = useRecoilState(filesAtom);
 	const setNewFileParentIdAtom = useSetRecoilState(newFileParentIDAtom);

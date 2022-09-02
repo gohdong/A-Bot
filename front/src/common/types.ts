@@ -25,3 +25,16 @@ export type NewFileType = {
 	parentID: string,
 	padding: number
 }
+
+export type documentType = {
+	fileType: FileType,
+	id: number,
+	description:string,
+	markdown: string | undefined
+}
+
+export type taskFileType = {
+	fileType: FileType,
+	id: number,
+	description:any,
+}

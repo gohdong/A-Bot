@@ -7,12 +7,12 @@ import {getFileNodeById} from "../../common/commonFunctions";
 import {file, FileType} from "../../common/types";
 import File from "./File";
 import Buttons from "./Buttons";
-import {recentSelected} from "../../recoil/sidebarState";
+import {recentSelectedFileIdAtom} from "../../recoil/sidebarState";
 
 
 export default function LeftSidebar() {
 	const [files, setFiles] = useRecoilState(filesAtom);
-	const [recentSelectedFile, setRecentSelectedFile] = useRecoilState(recentSelected);
+	const [recentSelectedFile, setRecentSelectedFile] = useRecoilState(recentSelectedFileIdAtom);
 	const setNewFileParentID = useSetRecoilState(newFileParentIDAtom);
 
 	useEffect(() => {

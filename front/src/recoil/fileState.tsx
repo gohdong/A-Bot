@@ -15,3 +15,13 @@ export const newFileParentIDAtom = atom<NewFileType>({
 		padding: 0,
 	},
 });
+
+export const isMarkdownEditingAtom = atom<boolean>({
+	key: "isMarkdownEditing",
+	default: false,
+});
+
+export const markDownValueAtom = atom<string>({
+	key: "markDownValue",
+	default: "",
+});

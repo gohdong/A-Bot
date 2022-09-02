@@ -3,7 +3,7 @@ import {VscFileCode, VscFolder, VscFolderOpened} from "react-icons/vsc";
 import {useRecoilState, useSetRecoilState} from "recoil";
 import {DiMarkdown} from "react-icons/di";
 
-import {recentSelected, recentSelectedDirectoryAtom} from "../../recoil/sidebarState";
+import {recentSelectedFileIdAtom, recentSelectedDirectoryAtom} from "../../recoil/sidebarState";
 import FileTreeNode from "../../data/Tree";
 import {FileTreeViewType, FileType} from "../../common/types";
 import NewFile from "./NewFile";
@@ -12,7 +12,7 @@ import {filesAtom, newFileParentIDAtom} from "../../recoil/fileState";
 
 export default function File({fileNode, padding}: FileTreeViewType) {
 	const [openChildren, setOpenChildren] = useState(false);
-	const [recentSelectedFile, setRecentSelectedFile] = useRecoilState(recentSelected);
+	const [recentSelectedFile, setRecentSelectedFile] = useRecoilState(recentSelectedFileIdAtom);
 	const [newFileParentID, setNewFileParentID] = useRecoilState(newFileParentIDAtom);
 	const setRecentSelectedDir = useSetRecoilState(recentSelectedDirectoryAtom);
 	const [files, setFiles] = useRecoilState(filesAtom);

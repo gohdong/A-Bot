@@ -4,8 +4,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.aibot.demo.domain.dto.UserDirectoryDto;
 import net.aibot.demo.domain.vo.UserDirectoryUpdateVO;
-import net.aibot.demo.exception.EmptyObjectException;
-import net.aibot.demo.exception.ParentFileIsNotDirectoryException;
 import net.aibot.demo.service.UserDirectoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -32,13 +30,13 @@ public class UserDirectoryController {
 
     @ApiOperation(value = "유저의 파일구조 하나를 가져온다.")
     @GetMapping(value = "/userDirectory/{userDirectoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody UserDirectoryDto getUserDirectory(@PathVariable long userDirectoryId) throws EmptyObjectException {
+    public @ResponseBody UserDirectoryDto getUserDirectory(@PathVariable long userDirectoryId) {
         return userDirectoryService.getUserDirectory(userDirectoryId);
     }
 
     @ApiOperation(value = "유저의 파일구조를 저장한다.")
     @PostMapping(value = "/userDirectory", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Long setUserDirectory(@RequestBody UserDirectoryUpdateVO userDirectoryUpdateVO) throws EmptyObjectException, ParentFileIsNotDirectoryException {
+    public @ResponseBody Long setUserDirectory(@RequestBody UserDirectoryUpdateVO userDirectoryUpdateVO) {
         return userDirectoryService.setUserDirectory(userDirectoryUpdateVO.toDto());
     }
 
@@ -46,7 +44,7 @@ public class UserDirectoryController {
     @PutMapping(value = "/userDirectory/{userDirectoryId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Long updateUserDirectory(
             @PathVariable long userDirectoryId,
-            @RequestBody UserDirectoryUpdateVO userDirectoryUpdateVO) throws EmptyObjectException {
+            @RequestBody UserDirectoryUpdateVO userDirectoryUpdateVO) {
         return userDirectoryService.updateUserDirectory(userDirectoryUpdateVO.toDto(userDirectoryId));
     }
 
@@ -59,7 +57,7 @@ public class UserDirectoryController {
     @ApiOperation(value = "유저의 파일구조 하나를 삭제한다.")
     @DeleteMapping(value = "/userDirectory/{userDirectoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Long deleteUserDirectory(
-            @PathVariable long userDirectoryId) throws EmptyObjectException {
+            @PathVariable long userDirectoryId) {
         return userDirectoryService.deleteUserDirectories(userDirectoryId);
     }
 }

@@ -3,7 +3,7 @@ import {VscFileCode, VscFolder, VscFolderOpened} from "react-icons/vsc";
 import {useRecoilState, useSetRecoilState} from "recoil";
 import {DiMarkdown} from "react-icons/di";
 
-import {recentSelected} from "../../recoil/sidebarState";
+import {recentSelectedFileIdAtom} from "../../recoil/sidebarState";
 import FileTreeNode from "../../data/Tree";
 import {FileType, NewFileType} from "../../common/types";
 import {filesAtom, newFileParentIDAtom} from "../../recoil/fileState";

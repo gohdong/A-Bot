@@ -1,9 +1,20 @@
 import MDEditor, {commands} from "@uiw/react-md-editor";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ReactMarkdown from "react-markdown";
+import {useRecoilState} from "recoil";
+import {markDownValueAtom} from "../../recoil/fileState";
 
-export default function Markdown() {
-	const [text, setText] = useState("");
+type markdownEditType = {
+	markdown : string
+}
+
+export default function MarkdownEditor({markdown} : markdownEditType) {
+	const [text, setText] = useRecoilState(markDownValueAtom);
+
+	useEffect(() => {
+		setText("");
+	},
+	[]);
 
 	const onChangeText = function(e: React.FormEvent<HTMLTextAreaElement>) {
 		setText(e.currentTarget.value);
@@ -18,16 +29,6 @@ export default function Markdown() {
 				onChange={setText}
 				preview={"edit"}
 				height={"100%"}
-				// commands={[
-				// 	// Custom Toolbars
-				// 	// eslint-disable-next-line max-len
-				// 	commands.group([commands.title1, commands.title2, commands.title3, commands.title4, commands.title5, commands.title6], {
-				// 		name: "title",
-				// 		groupName: "title",
-				// 		buttonProps: {"aria-label": "Insert title"},
-				// 	}), commands.divider,
-				// ]}
-
 			/>
 		</div>
 		{/* <div id="preview">*/}
