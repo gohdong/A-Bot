@@ -1,18 +1,35 @@
-import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import "./AppBar.scss";
-import ViewSideBar from "../icons/ViewSideBarIcon";
-import {recentSelectedFileTypeAtom, sidebarState} from "../../recoil/sidebarState";
-import ExportIcon from "../icons/ExportIcon";
-import {isMarkdownEditingAtom} from "../../recoil/fileState";
+import {recentSelectedFileIdAtom, recentSelectedFileTypeAtom} from "../../recoil/sidebarState";
+import {isMarkdownEditingAtom, markDownValueAtom} from "../../recoil/fileState";
+import {FileType} from "../../common/types";
 
 function AppBar() {
-	const setSidebarOpen = useSetRecoilState(sidebarState);
 	const [isMarkdownEditing, setIsMarkdownEditing] = useRecoilState(isMarkdownEditingAtom);
-	// eslint-disable-next-line max-len
-	const [recentSelectedFileType, setRecentSelectedFileType] = useRecoilState(recentSelectedFileTypeAtom);
+	const recentSelectedFileType = useRecoilValue(recentSelectedFileTypeAtom);
+	const recentSelectedFileId = useRecoilValue(recentSelectedFileIdAtom);
+	const markdownValue = useRecoilValue(markDownValueAtom);
 
-	const onClickButton = () => {
-		setSidebarOpen(prev => !prev);
+	const onClickButton = async () => {
+		setIsMarkdownEditing(prev => !prev);
+
+		if (recentSelectedFileType === FileType.task_file && isMarkdownEditing) {
+			console.log("!?");
+		}
+
+		if (recentSelectedFileType === FileType.document && isMarkdownEditing) {
+			const fetchPromise = await fetch(`http://localhost:8080/userDirectoryContent/document/${recentSelectedFileId}`, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					markdown: markdownValue,
+				}),
+			});
+
+			console.log(fetchPromise);
+		}
 	};
 
 	return (
@@ -20,13 +37,15 @@ function AppBar() {
 			<div className="app-bar-wrap">
 				<p>A-Bot</p>
 			</div>
+
 			{
-				isMarkdownEditing ?
-					<span className={"button save"}>저장</span> :
-					<span className={"button edit"}>수정</span>
+				recentSelectedFileType !== FileType.directory && <div onClick={onClickButton}>
+					{
+						isMarkdownEditing ?
+							<span className={"button save"}>저장</span> :
+							<span className={"button edit"}>수정</span>}
+				</div>
 			}
-
-
 		</div>
 	);
 }

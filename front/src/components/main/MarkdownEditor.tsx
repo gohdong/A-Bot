@@ -12,7 +12,7 @@ export default function MarkdownEditor({markdown} : markdownEditType) {
 	const [text, setText] = useRecoilState(markDownValueAtom);
 
 	useEffect(() => {
-		setText("");
+		setText(markdown);
 	},
 	[]);
 

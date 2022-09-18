@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6a0da1f8-24ab-4fc4-b579-1b2e6e646867" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/db/h2_test.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/back/db/h2_test.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/db/h2_test.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/back/db/h2_test.trace.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/common/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/common/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/left_sidebar/Buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/left_sidebar/Buttons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/left_sidebar/File.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/left_sidebar/File.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/left_sidebar/LeftSidebar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/left_sidebar/LeftSidebar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/left_sidebar/LeftSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/left_sidebar/LeftSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/data/Tree.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/data/Tree.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/recoil/imageState.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/recoil/sidebarState.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/recoil/sidebarState.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,20 +35,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.standard" value="" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/front/node_modules/typescript/lib" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "/Users/gohdong/Workspace/A-Bot/front/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RunManager" selected="npm.start">
     <configuration name="server" type="ShConfigurationType">
       <option name="SCRIPT_TEXT" value="" />
@@ -97,6 +84,11 @@
       <updated>1653820059285</updated>
       <workItem from="1653820060408" duration="128000" />
       <workItem from="1659181577378" duration="3452000" />
+      <workItem from="1662017775230" duration="599000" />
+      <workItem from="1662096902157" duration="598000" />
+      <workItem from="1662126721037" duration="2293000" />
+      <workItem from="1662429909794" duration="93000" />
+      <workItem from="1663507882218" duration="872000" />
     </task>
     <servers />
   </component>
