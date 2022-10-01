@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a0da1f8-24ab-4fc4-b579-1b2e6e646867" name="Changes" comment="" />
+    <list default="true" id="6a0da1f8-24ab-4fc4-b579-1b2e6e646867" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../back/db/h2_test.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/../back/db/h2_test.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/controller/APIJobController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/controller/APIJobController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/controller/UserDirectoryContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/controller/UserDirectoryContentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/entity/UserContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/entity/UserContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/vo/UserTaskFileContentUpdateVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/java/net/aibot/demo/domain/vo/UserTaskFileContentUpdateVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../back/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

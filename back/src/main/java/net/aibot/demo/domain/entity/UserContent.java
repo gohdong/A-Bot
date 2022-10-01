@@ -50,7 +50,7 @@ public class UserContent {
     public UserContentDocumentDto toDocumentDto() {
         return UserContentDocumentDto.documentBuilder()
                 .id(id)
-                .description(new Gson().fromJson(description, new TypeToken<String>() {}.getType()))
+                .description(description)
                 .fileType(fileType)
                 .build();
     }
