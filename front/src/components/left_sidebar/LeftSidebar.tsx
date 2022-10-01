@@ -1,16 +1,19 @@
 import React, {useEffect} from "react";
-import {useRecoilState} from "recoil";
+import {useRecoilState, useSetRecoilState} from "recoil";
 import "./LeftSidebar.scss";
-import FileTreeNode, {FileType} from "../../data/Tree";
-import {filesState} from "../../recoil/imageState";
+import FileTreeNode from "../../data/Tree";
+import {filesAtom, newFileParentIDAtom} from "../../recoil/fileState";
 import {getFileNodeById} from "../../common/commonFunctions";
-import {file} from "../../common/types";
+import {file, FileType} from "../../common/types";
 import File from "./File";
 import Buttons from "./Buttons";
+import {recentSelectedFileIdAtom} from "../../recoil/sidebarState";
 
 
 export default function LeftSidebar() {
-	const [files, setFiles] = useRecoilState(filesState);
+	const [files, setFiles] = useRecoilState(filesAtom);
+	const [recentSelectedFile, setRecentSelectedFile] = useRecoilState(recentSelectedFileIdAtom);
+	const setNewFileParentID = useSetRecoilState(newFileParentIDAtom);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -28,7 +31,7 @@ export default function LeftSidebar() {
 					value1?.name,
 					value1.id.toString(),
 					getFileNodeById(result, value1.parentId.toString()),
-					value1.isFile ? FileType.TASK : FileType.DIRECTORY,
+					FileType[value1.fileType as unknown as keyof typeof FileType],
 				);
 
 				result.push(tempFileNode);
@@ -37,9 +40,18 @@ export default function LeftSidebar() {
 		});
 	}, []);
 
+	const onClickFileTreeWrap = (e:React.MouseEvent) => {
+		setRecentSelectedFile("0");
+		setNewFileParentID({
+			padding: 0,
+			fileType: FileType.directory,
+			parentID: "",
+		});
+	};
+
 	return (
 		<div id="left-sidebar">
-			<div id="fileTreeWrap">
+			<div id="fileTreeWrap" onClick={onClickFileTreeWrap}>
 				{
 					files
 						.filter(value => value.getParent === null)
