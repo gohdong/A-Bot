@@ -12,7 +12,8 @@ import java.util.Date;
 
 @NoArgsConstructor
 @Getter
-@Entity(name = "user_directory")
+@Entity
+@Table(name = "user_directory")
 public class UserDirectory {
     @Id
     private long id;
@@ -21,7 +22,6 @@ public class UserDirectory {
     private long parentId;
 
     private String name;
-    private String description;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "file_type")
@@ -33,11 +33,10 @@ public class UserDirectory {
 
 
     @Builder
-    public UserDirectory(long id, long parentId, String name, String description, FileType fileType, Date createdDate) {
+    public UserDirectory(long id, long parentId, String name, FileType fileType, Date createdDate) {
         setId(id);
         this.parentId = parentId;
         this.name = name;
-        this.description = description;
         this.fileType = fileType;
         this.createdDate = createdDate;
     }
@@ -55,7 +54,6 @@ public class UserDirectory {
                 .id(id)
                 .parentId(parentId)
                 .name(name)
-                .description(description)
                 .fileType(fileType)
                 .createdDate(createdDate)
                 .build();

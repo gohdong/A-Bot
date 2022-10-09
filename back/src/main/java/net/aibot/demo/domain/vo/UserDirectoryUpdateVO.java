@@ -3,24 +3,25 @@ package net.aibot.demo.domain.vo;
 import io.swagger.annotations.ApiModel;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import net.aibot.demo.domain.FileType;
 import net.aibot.demo.domain.dto.UserDirectoryDto;
 
 import java.util.Date;
 
+@NoArgsConstructor
 @ApiModel
 @Data
 public class UserDirectoryUpdateVO {
     private long parentId;
     private String name;
-    private String description;
     private FileType fileType;
 
     @Builder
     public UserDirectoryUpdateVO(long parentId, String name, String description, FileType fileType) {
         this.parentId = parentId;
         this.name = name;
-        this.description = description;
+//        this.description = description;
         this.fileType = fileType;
     }
 
@@ -34,7 +35,7 @@ public class UserDirectoryUpdateVO {
         return UserDirectoryDto.builder()
                 .parentId(parentId)
                 .name(name)
-                .description(description)
+//                .description(description)
                 .fileType(fileType)
                 .createdDate(new Date())
                 .build();

@@ -12,6 +12,7 @@
 3. 더 이상 사용하지 않을 경우 `bash kill.sh` 실행.
 
 ## 빌드 실패 시
+### Case) Java Home 설정 문제
 다음과 같은 에러 발생 시, Java Home 설정이 잘못 되어있는 것임.
 ```
 Execution failed for task ':compileJava'.
@@ -48,6 +49,17 @@ or
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home
 export PATH=$JAVA_HOME/bin:$PATH
 ```
+
+### Case) Test Case 실패에 의한 DB 꼬임 현상
+```
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///Users/jina/Git_Projects/A-Bot/back/build/reports/tests/test/index.html
+```
+
+`bash back/shellscript/kill.sh` 실행 후 다시 시도
 
 
 # Swagger
