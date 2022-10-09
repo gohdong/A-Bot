@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6a0da1f8-24ab-4fc4-b579-1b2e6e646867" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/db/h2_test.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/back/db/h2_test.mv.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,17 +36,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "/Users/gohdong/Workspace/A-Bot/front/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/gohdong/Workspace/A-Bot/front/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.start">
     <configuration name="server" type="ShConfigurationType">
       <option name="SCRIPT_TEXT" value="" />
@@ -88,7 +89,8 @@
       <workItem from="1662096902157" duration="598000" />
       <workItem from="1662126721037" duration="2293000" />
       <workItem from="1662429909794" duration="93000" />
-      <workItem from="1663507882218" duration="872000" />
+      <workItem from="1663507882218" duration="1459000" />
+      <workItem from="1665309258913" duration="599000" />
     </task>
     <servers />
   </component>
