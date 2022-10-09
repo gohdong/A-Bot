@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a0da1f8-24ab-4fc4-b579-1b2e6e646867" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/db/h2_test.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/back/db/h2_test.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/db/h2_test.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/db/h2_test.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/front/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/appbar/AppBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/appbar/AppBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/left_sidebar/LeftSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/left_sidebar/LeftSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/main/MainContents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/main/MainContents.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +96,7 @@
       <workItem from="1662126721037" duration="2293000" />
       <workItem from="1662429909794" duration="93000" />
       <workItem from="1663507882218" duration="1459000" />
-      <workItem from="1665309258913" duration="599000" />
+      <workItem from="1665309258913" duration="4942000" />
     </task>
     <servers />
   </component>

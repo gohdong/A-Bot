@@ -16,6 +16,10 @@ export default function MainContents() {
 
 	useEffect(() => {
 		async function fetchData() {
+			if (recentSelectFile === "0") {
+				return;
+			}
+
 			const fetching = await fetch(`http://localhost:8080/userDirectoryContent/${recentSelectFile}`);
 
 			const data = await fetching.json();
@@ -52,10 +56,10 @@ export default function MainContents() {
 			if (file.fileType === FileType.document) {
 				if (isMarkdownEditing) {
 					// @ts-ignore
-					return <MarkdownEditor markdown={file.markdown}/>;
+					return <MarkdownEditor markdown={file.description}/>;
 				}
 				// @ts-ignore
-				return <MarkdownViewer source={file.markdown}/>;
+				return <MarkdownViewer source={file.description}/>;
 			}
 		}
 		return <p>파일을 선택해 주세요</p>;

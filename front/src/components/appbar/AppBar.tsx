@@ -1,13 +1,15 @@
 import {useRecoilState, useRecoilValue} from "recoil";
+import {useState} from "react";
 import "./AppBar.scss";
 import {recentSelectedFileIdAtom, recentSelectedFileTypeAtom} from "../../recoil/sidebarState";
-import {isMarkdownEditingAtom, markDownValueAtom} from "../../recoil/fileState";
-import {FileType} from "../../common/types";
+import {filesAtom, isMarkdownEditingAtom, markDownValueAtom} from "../../recoil/fileState";
+import {documentType, FileType, taskFileType} from "../../common/types";
+import {getFileNodeById} from "../../common/commonFunctions";
 
 function AppBar() {
 	const [isMarkdownEditing, setIsMarkdownEditing] = useRecoilState(isMarkdownEditingAtom);
 	const recentSelectedFileType = useRecoilValue(recentSelectedFileTypeAtom);
-	const recentSelectedFileId = useRecoilValue(recentSelectedFileIdAtom);
+	const [recentSelectedFileId, setRecentSelectedFileId] = useRecoilState(recentSelectedFileIdAtom);
 	const markdownValue = useRecoilValue(markDownValueAtom);
 
 	const onClickButton = async () => {
@@ -28,7 +30,8 @@ function AppBar() {
 				}),
 			});
 
-			console.log(fetchPromise);
+			setRecentSelectedFileId("0");
+			setRecentSelectedFileId(`${await fetchPromise.json()}`);
 		}
 	};
 
