@@ -9,9 +9,49 @@
     height: 35px;
     background-color: yellow;
     display: flex;
+
     .tab {
       width: 200px;
       color: blue;
+    }
+  }
+
+  #markdown {
+    height: 100%;
+    display: grid;
+    #editor-wrap {
+      padding: 16px;
+
+      #editor {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        border: none;
+        resize: none;
+        font-size: 16px;
+      }
+
+      #editor:focus {
+        outline: none;
+      }
+    }
+
+
+    #preview {
+      padding: 16px;
+
+      h1, h2, h3, h4, h5, p {
+        margin: 10px 0;
+      }
+
+      ul, ol {
+        padding-left: 20px;
+      }
+
+      code {
+        background: lemonchiffon;
+        color: #b60808;
+      }
     }
   }
 }
@@ -23,6 +63,7 @@
   }
   #main-contents {
     min-width: 0;
+
     #main-contents-wrap {
       > .image-wrap {
         > img {
@@ -30,6 +71,7 @@
         }
       }
     }
+
     #main-skeleton-wrap {
       .image-wrap {
         > div {

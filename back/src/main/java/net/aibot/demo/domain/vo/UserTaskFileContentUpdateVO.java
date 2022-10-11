@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.aibot.demo.util.GroupNotNull;
+import org.springframework.http.HttpMethod;
 
 import java.util.Map;
 
@@ -18,9 +19,21 @@ public class UserTaskFileContentUpdateVO {
     @GroupNotNull(name = "userTaskFileContent")
     private Map<String, Object> body;
 
+    @GroupNotNull(name = "userTaskFileContent")
+    private String destinationURI;
+
+    @GroupNotNull(name = "userTaskFileContent")
+    private int amount;
+
+    @GroupNotNull(name = "userTaskFileContent")
+    private HttpMethod httpMethod;
+
     @Builder
-    public UserTaskFileContentUpdateVO(Map<String, String> headers, Map<String, Object> body) {
+    public UserTaskFileContentUpdateVO(Map<String, String> headers, Map<String, Object> body, String destinationURI, int amount, HttpMethod httpMethod) {
         this.headers = headers;
         this.body = body;
+        this.destinationURI = destinationURI;
+        this.amount = amount;
+        this.httpMethod = httpMethod;
     }
 }
