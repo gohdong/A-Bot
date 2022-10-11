@@ -16,9 +16,11 @@ public class ShareQueue {
     private Map<String, ConcurrentLinkedQueue<String>> eachQueue = new HashMap<>();
 
     public void setClientAlive(String destination, boolean alive) {
-        System.out.println(destination);
+        System.out.println("Destination " + destination);
         String[] split = destination.split("/");
         System.out.println();
-        clientAliveMap.put(split[2], alive);
+        if (split.length == 3) {
+            clientAliveMap.put(split[2], alive);
+        }
     }
 }

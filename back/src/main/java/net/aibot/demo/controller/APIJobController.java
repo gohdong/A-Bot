@@ -3,7 +3,10 @@ package net.aibot.demo.controller;
 import lombok.RequiredArgsConstructor;
 import net.aibot.demo.component.ShareQueue;
 import net.aibot.demo.listener.APIJobEvent;
+import net.aibot.demo.service.ApiCallService;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +18,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class APIJobController {
     private final ShareQueue shareQueue;
     private final ApplicationEventPublisher publisher;
+    private final ApiCallService apiCallService;
 
     @GetMapping(value = "/test/queue")
     public String storeQueue(@RequestParam int amount, @RequestParam String id) throws InterruptedException {
@@ -46,11 +50,16 @@ public class APIJobController {
         for (int i=1 ; i<=amount ; i++) {
 
             //DO API Call
-
-            queue.offer(i + " 's API Call -> Success");
+            String result = apiCallService.callAPI(taskFileId);
+            queue.offer(i + " 's API Call -> " + result);
         }
         queue.offer(shareQueue.END_OF_QUEUE);
 
         return taskFileId;
+    }
+
+    @GetMapping(value = "/test/receiveAPI")
+    public ResponseEntity<String> receiveAPI() {
+        return new ResponseEntity<>("success", HttpStatus.OK);
     }
 }
